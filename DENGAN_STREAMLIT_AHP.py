@@ -523,9 +523,6 @@ if 'data_terkumpul' not in st.session_state: st.session_state.data_terkumpul = {
 if 'hasil_global' not in st.session_state: st.session_state.hasil_global = None
 if 'bobot_ahp' not in st.session_state:
     st.session_state.bobot_ahp, _, _ = hitung_bobot_ahp(matriks_dari_bobot(BOBOT_DEFAULT_PERSEN))
-if st.session_state.get('sukses_simpan', False):
-    st.toast("Seluruh data berhasil disahkan dan disimpan ke database!")
-    st.session_state.sukses_simpan = False  
 
 with st.sidebar:
     st.markdown("<h1>SPK Penempatan Kelas SMAN 7 BEKASI</h1>", unsafe_allow_html=True)
@@ -684,6 +681,9 @@ if halaman == "Unggah & Kalkulasi":
 
     # ---------- 4. Verifikasi guru & simpan ----------
     if st.session_state.hasil_global is not None:
+        if st.session_state.get('sukses_simpan', False):
+        st.toast("Seluruh data berhasil disahkan dan disimpan ke database!")
+        st.session_state.sukses_simpan = False  
         st.divider()
         st.markdown('<div class="eyebrow">STEP 2 / 3</div>', unsafe_allow_html=True)
         st.write("### Verifikasi Guru (Seluruh Siswa)")
