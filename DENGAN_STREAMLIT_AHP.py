@@ -546,10 +546,6 @@ if halaman == "Unggah & Kalkulasi":
         "Karena semua siswa dihitung sekaligus, hasil penempatan tidak lagi bergantung pada urutan unggah."
     )
 
-    if st.session_state.get('sukses_simpan', False):
-        st.success("Seluruh data berhasil disahkan dan disimpan ke database!")
-        st.session_state.sukses_simpan = False
-
     # ---------- 1. Tambah data per kelas ----------
     st.write("##### 1. Tambah Data per Kelas")
     pilihan_kelas = [f"X{i}" for i in range(1, 13)]
@@ -729,8 +725,8 @@ if halaman == "Unggah & Kalkulasi":
                 simpan_ke_db(df_final)
                 st.session_state.data_terkumpul = {}
                 st.session_state.hasil_global = None
-                st.session_state.sukses_simpan = True 
                 st.rerun()
+                st.success("Seluruh data berhasil disahkan dan disimpan ke database!")
 
 # HALAMAN 2: HASIL AKHIR & MANAJEMEN DATA
 elif halaman == "Database & Manajemen":
