@@ -725,8 +725,9 @@ if halaman == "Unggah & Kalkulasi":
                 simpan_ke_db(df_final)
                 st.session_state.data_terkumpul = {}
                 st.session_state.hasil_global = None
-                st.rerun()
                 st.success("Seluruh data berhasil disahkan dan disimpan ke database!")
+                time.sleep(2)
+                st.rerun()
 
 # HALAMAN 2: HASIL AKHIR & MANAJEMEN DATA
 elif halaman == "Database & Manajemen":
