@@ -726,7 +726,6 @@ if halaman == "Unggah & Kalkulasi":
                 st.session_state.data_terkumpul = {}
                 st.session_state.hasil_global = None
                 st.success("Seluruh data berhasil disahkan dan disimpan ke database!")
-                st.rerun()
 
 # HALAMAN 2: HASIL AKHIR & MANAJEMEN DATA
 elif halaman == "Database & Manajemen":
