@@ -730,7 +730,7 @@ if halaman == "Unggah & Kalkulasi":
                 st.success("Seluruh data berhasil disahkan dan disimpan ke database!")
                 pesan_tunggu = st.empty() 
                 
-                for detik in range(3, 0, -1):
+                for detik in range(5, 0, -1):
                     pesan_tunggu.info(f"Halaman akan dimuat ulang dalam {detik} detik...")
                     time.sleep(1)
                 pesan_tunggu.empty()
