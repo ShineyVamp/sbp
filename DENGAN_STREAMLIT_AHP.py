@@ -726,8 +726,14 @@ if halaman == "Unggah & Kalkulasi":
                 simpan_ke_db(df_final)
                 st.session_state.data_terkumpul = {}
                 st.session_state.hasil_global = None
+                
                 st.success("Seluruh data berhasil disahkan dan disimpan ke database!")
-                time.sleep(2)
+                pesan_tunggu = st.empty() 
+                
+                for detik in range(3, 0, -1):
+                    pesan_tunggu.info(f"Halaman akan dimuat ulang dalam {detik} detik...")
+                    time.sleep(1)
+                pesan_tunggu.empty()
                 st.rerun()
 
 # HALAMAN 2: HASIL AKHIR & MANAJEMEN DATA
