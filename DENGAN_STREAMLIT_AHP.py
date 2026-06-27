@@ -4,7 +4,7 @@ import numpy as np
 import io
 import sqlite3
 from scipy.optimize import linear_sum_assignment
-
+    
 #database
 def init_db():
     conn = sqlite3.connect('penjurusan.db')
@@ -523,6 +523,9 @@ if 'data_terkumpul' not in st.session_state: st.session_state.data_terkumpul = {
 if 'hasil_global' not in st.session_state: st.session_state.hasil_global = None
 if 'bobot_ahp' not in st.session_state:
     st.session_state.bobot_ahp, _, _ = hitung_bobot_ahp(matriks_dari_bobot(BOBOT_DEFAULT_PERSEN))
+if st.session_state.get('sukses_simpan', False):
+    st.success("Seluruh data berhasil disahkan dan disimpan ke database!")
+    st.session_state.sukses_simpan = False  
 
 with st.sidebar:
     st.markdown("<h1>SPK Penempatan Kelas SMAN 7 BEKASI</h1>", unsafe_allow_html=True)
@@ -725,7 +728,8 @@ if halaman == "Unggah & Kalkulasi":
                 simpan_ke_db(df_final)
                 st.session_state.data_terkumpul = {}
                 st.session_state.hasil_global = None
-                st.success("Seluruh data berhasil disahkan dan disimpan ke database!")
+                st.session_state.sukses_simpan = True 
+                st.rerun()
 
 # HALAMAN 2: HASIL AKHIR & MANAJEMEN DATA
 elif halaman == "Database & Manajemen":
