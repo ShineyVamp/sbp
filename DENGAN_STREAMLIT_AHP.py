@@ -524,7 +524,7 @@ if 'hasil_global' not in st.session_state: st.session_state.hasil_global = None
 if 'bobot_ahp' not in st.session_state:
     st.session_state.bobot_ahp, _, _ = hitung_bobot_ahp(matriks_dari_bobot(BOBOT_DEFAULT_PERSEN))
 if st.session_state.get('sukses_simpan', False):
-    st.success("Seluruh data berhasil disahkan dan disimpan ke database!")
+    st.toast("Seluruh data berhasil disahkan dan disimpan ke database!")
     st.session_state.sukses_simpan = False  
 
 with st.sidebar:
